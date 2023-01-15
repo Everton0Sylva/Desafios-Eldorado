@@ -21,19 +21,5 @@ export class ViewsComponent implements OnInit {
       { Id: 2, Name: "Smartphone IPhone", Price: 4736, profile: "smartphone.png", numSelected: 0 });
   }
 
-  setProduct(fn, product: Product) {
-    if (!isNullOrUndefined(product) && !isNullOrUndefined(product)) {
-      this.listProducts.forEach((prod) => {
-        if (prod.Id == product.Id) {
-          if (fn == '+') prod.numSelected++;
-          else if (fn == '-') {
-            prod.numSelected = prod.numSelected > 0 ? prod.numSelected - 1 : 0;
-          }
-
-          this.totalPurchase += (prod.Price * prod.numSelected)
-        }
-      })
-    }
-  }
 
 }
