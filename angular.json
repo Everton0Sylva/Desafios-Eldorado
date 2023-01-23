@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "desafio1": {
+    "desafio2": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "desafio1:build:production"
+              "browserTarget": "desafio2:build:production"
             },
             "development": {
-              "browserTarget": "desafio1:build:development"
+              "browserTarget": "desafio2:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "desafio1:build"
+            "browserTarget": "desafio2:build"
           }
         },
         "test": {

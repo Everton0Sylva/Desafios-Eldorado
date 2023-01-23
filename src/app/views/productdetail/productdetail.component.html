@@ -1,0 +1,15 @@
+<div *ngIf="product != null && product != undefined">
+    <div class="d-flex flex-column align-items-center justify-content-center mt-1">
+        <div class="col-md-5">
+            <img [src]="product.Profile" class="d-block w-100" [alt]="product.Name">
+        </div>
+        <div class="ms-auto me-3 d-flex flex-column">
+            <h4 class="text-warning">{{product.Price | currency:'BRL'}}</h4>
+            <button class="btn btn-warning" (click)="onAddProduct()">Adicionar<i class="fas fa-cart-plus ms-2"></i></button>
+        </div>
+        <div class="d-flex flex-row">
+            <div id="detailDiv" class="ms-2">
+            </div>
+        </div>
+    </div>
+</div>

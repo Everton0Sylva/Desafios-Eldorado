@@ -1,55 +1,61 @@
-<div *ngIf="chartValues != null && chartValues != undefined">
-    <div class="col-9 d-block mx-auto border-bottom border-secondary-subtle my-4"></div>
-<div class="d-flex flex-row flex-wrap justify-content-start ms-3">
-    <div class="col">
-        <h5 class="Purchase flex-fill">{{chartValues.purchase | currency:'BRL'}}</h5>
-        <h6 class="Discount">{{chartValues.discount | currency:'BRL'}}</h6>
-        <h4 class="Final flex-fill">{{chartValues.final | currency:'BRL'}}</h4>
+<div *ngIf="chart != null && chart != undefined">
+    <div class="col-12 d-block mx-auto border border-secondary-subtle my-4">
+        <div class="row">
+            <div class="col-10"></div>
+        </div>
     </div>
-    <div class="col d-flex align-items-center justify-content-start">
-        <button class="btn btn-link btn-chart me-3 mr-3 text-warning" data-toggle="tooltip"
-            title="Abrir Gerador de Cupom" data-bs-delay='{"show": 5000}' (click)="onOpenModalCoupon()"
-            *ngIf="chartValues.discount == 0">
-            <i class="fas fa-question-circle"></i></button>
-        <div class="col-md-8 col-sm-12">
-            <div class="input-group" [ngSwitch]="chartValues.discount > 0">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="inputCoupon" placeholder="Digite o Códido do Cupon"
-                        [disabled]="chartValues.discount > 0">
-                    <label for="inputCoupon">Cupon de Desconto</label>
+    <div class="d-flex flex-row flex-wrap justify-content-start ms-3">
+        <div class="col">
+            <h5 class="Purchase flex-fill">{{chartValues.purchase | currency:'BRL'}}</h5>
+            <h6 class="Discount">{{chartValues.discount | currency:'BRL'}}</h6>
+            <h4 class="Final flex-fill">{{chartValues.final | currency:'BRL'}}</h4>
+        </div>
+        <div class="col d-flex align-items-center justify-content-start">
+            <button class="btn btn-link btn-chart me-3 mr-3 text-warning" data-toggle="tooltip"
+                title="Abrir Gerador de Cupom" data-bs-delay='{"show": 5000}' (click)="onOpenModalCoupon()"
+                *ngIf="chartValues.discount == 0">
+                <i class="fas fa-question-circle"></i></button>
+            <div class="col-md-8 col-sm-12">
+                <div class="input-group" [ngSwitch]="chartValues.discount > 0">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="inputCoupon" placeholder="Digite o Códido do Cupon"
+                            [disabled]="chartValues.discount > 0">
+                        <label for="inputCoupon">Cupon de Desconto</label>
+                    </div>
+                    <button *ngSwitchDefault class="btn btn-sm btn-outline-primary"
+                        (click)="onApllyDiscount()">Aplicar<i class="fas fa-file-invoice-dollar ms-2 ml-2"></i></button>
+                    <button *ngSwitchCase="true" type="button" class="btn btn-sm btn-danger"
+                        (click)="onRemoveDiscount()">Remover<i class="fas fa-trash-alt ms-2 ml-2"></i></button>
                 </div>
-                <button *ngSwitchDefault class="btn btn-sm btn-outline-primary" (click)="onApllyDiscount()">Aplicar<i
-                        class="fas fa-file-invoice-dollar ms-2 ml-2"></i></button>
-                <button *ngSwitchCase="true" type="button" class="btn btn-sm btn-danger"
-                    (click)="onRemoveDiscount()">Remover<i class="fas fa-trash-alt ms-2 ml-2"></i></button>
             </div>
         </div>
     </div>
-</div>
-<div class="modal" id="modalCoupon" tabindex="-1" aria-labelledby="modalCouponLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title fs-6" id="modalCouponLabel">Gerar de Cupom de Desconto</h6>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="d-flex flex-column justify-content-center align-items-center"
-                    *ngIf="currentCoupon != null && currentCoupon != undefined">
-                    <h4 class="text-info text-uppercase">{{currentCoupon.CouponString}}</h4>
-                    <h6 class="text-muted">{{currentCoupon.percent}}%</h6>
+    <div class="modal" id="modalCoupon" tabindex="-1" aria-labelledby="modalCouponLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title fs-6" id="modalCouponLabel">Gerar de Cupom de Desconto</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex flex-column justify-content-center align-items-center"
+                        *ngIf="currentCoupon != null && currentCoupon != undefined">
+                        <h4 class="text-info text-uppercase">{{currentCoupon.CouponString}}</h4>
+                        <h6 class="text-muted">{{currentCoupon.percent}}%</h6>
 
-                    <div class="d-grid gap-2 col-10 mx-auto mt-4">
-                        <button type="button" class="btn btn-outline-success" (click)="onCopyCoupontoClipboard()">Copiar
-                            Cupom</button>
+                        <div class="d-grid gap-2 col-10 mx-auto mt-4">
+                            <button type="button" class="btn btn-outline-success"
+                                (click)="onCopyCoupontoClipboard()">Copiar
+                                Cupom</button>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 col-10 mx-auto"
+                        *ngIf="currentCoupon == null || currentCoupon == undefined">
+                        <button type="button" class="btn btn-sm btn-secondary" (click)="onGenerateCoupon()">Gerar Cupom
+                            <i class="fas fa-money-bill-wave ms-2 ml-2"></i>
+                        </button>
                     </div>
                 </div>
-                <div class="d-grid gap-2 col-10 mx-auto" *ngIf="currentCoupon == null || currentCoupon == undefined">
-                    <button type="button" class="btn btn-sm btn-secondary" (click)="onGenerateCoupon()">Gerar Cupom
-                        <i class="fas fa-money-bill-wave ms-2 ml-2"></i>
-                    </button>
-                </div>
             </div>
         </div>
     </div>
-</div>

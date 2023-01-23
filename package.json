@@ -1,5 +1,5 @@
 {
-  "name": "desafio1",
+  "name": "desafio2",
   "version": "1.1.1",
   "scripts": {
     "ng": "ng",
@@ -24,6 +24,7 @@
     "angular2-text-mask": "^9.0.0",
     "bootstrap": "^5.2.3",
     "jquery": "^3.6.3",
+    "json-server": "^0.17.1",
     "ngx-mask": "^14.2.4",
     "ngx-ui-loader": "^13.0.0",
     "rxjs": "~7.5.0",

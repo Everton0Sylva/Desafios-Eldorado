@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { ChartComponent } from './chart/chart.component';
 import { ShoppingComponent } from './shopping/shopping.component';
+import { LayoutModule } from '../layout/layout.module';
+import { ProductdetailComponent } from './productdetail/productdetail.component';
 
 
 @NgModule({
@@ -15,6 +17,7 @@ import { ShoppingComponent } from './shopping/shopping.component';
     ViewsComponent,
     ChartComponent,
     ShoppingComponent,
+    ProductdetailComponent,
   ],
   imports: [
     CommonModule,
@@ -22,7 +25,8 @@ import { ShoppingComponent } from './shopping/shopping.component';
     ReactiveFormsModule,
     NgxDatatableModule,
     ViewsRoutingModule,
-    NgxMaskModule
+    NgxMaskModule,
+    LayoutModule
   ]
 })
 export class ViewsModule { }

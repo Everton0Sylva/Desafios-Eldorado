@@ -1,12 +1,24 @@
-<div class="container">
-    <div class="card py-3">
-        <div class="d-flex justify-content-center">
-            <h1 class="text-uppercase text-primary">Desafio Semana 1</h1>
+<div class="card py-3">
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <h4 class="text-uppercase text-primary">Destaques</h4>
+        <div class="col-md-3 col-sm-12 mt-3">
+            <div id="carouselProducts" class="carousel carousel-dark slide carousel-fade card" data-bs-ride="carousel"
+                data-bs-interval="5000" data-bs-pause="hover">
+                <div class="carousel-indicators mt-2">
+                    <button type="button" data-bs-target="#carouselProducts" [ngClass]="{'active': i === 0}"
+                        *ngFor="let product of listProducts; let i = index" [attr.data-bs-slide-to]="i"
+                        [attr.aria-label]="product.Nickname"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item" *ngFor="let product of listProducts; let i = index"
+                        [ngClass]="{'active': i === 0}" (click)="onOpenProduct(product)">
+                        <img [src]="product.Profile" class="d-block w-100" [alt]="product.Name">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h6 class="text-bolder text-danger">{{product.Price | currency:'BRL'}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <app-shopping [listProducts]="listProducts" (purchaseCalculate)="totalPurchase = $event"></app-shopping>
-        
-        <app-chart [totalChart]="totalPurchase"></app-chart>
-
     </div>
 </div>

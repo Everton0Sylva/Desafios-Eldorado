@@ -1,5 +1,8 @@
 import { Component, ElementRef, Input, TemplateRef, ViewChild } from '@angular/core';
 import { isNullOrUndefined } from '@swimlane/ngx-datatable';
+import { Chart } from 'src/app/model/Chart';
+import { ApiRequestService } from 'src/app/services/apirequest.service';
+import { ChartService } from 'src/app/services/chart.service';
 import Swal from 'sweetalert2';
 declare var bootstrap: any;
 
@@ -15,6 +18,11 @@ export class ChartComponent {
 
   public availabledCoupons: any;
 
+  public chart: Array<Chart>;
+
+  constructor(private apiRequestService: ApiRequestService, private chartService: ChartService) {
+  }
+
   public toast = Swal.mixin({
     toast: true,
     position: 'top',
@@ -22,29 +30,6 @@ export class ChartComponent {
     timer: 5000,
     timerProgressBar: false,
   })
-
-
-  @Input()
-  set totalChart(totalPurchase) {
-    if (totalPurchase > 0) {
-      if (this.chartValues == null || this.chartValues == undefined) {
-        this.chartValues = {
-          purchase: 0,
-          discount: 0,
-          final: 0
-        }
-      }
-      if (this.chartValues.discount > 0) {
-        this.onApllyDiscount();
-      }
-      this.chartValues.purchase = totalPurchase;
-
-
-
-      this.onsetChartValues();
-    }
-  }
-
 
   ngOnInit() {
     this.availabledCoupons = [{
@@ -59,6 +44,10 @@ export class ChartComponent {
       CouponString: "seuniver17",
       percent: 17.76
     }];
+
+    this.chartService.getChart().subscribe(chart => {
+      this.chart = chart;
+    })
   }
 
 

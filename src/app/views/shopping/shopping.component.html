@@ -1,10 +1,10 @@
 <div class="d-flex justify-content-around mt-2">
     <div class="card" *ngFor="let product of listProducts;">
         <div class="d-flex flex-column justify-content-center p-3">
-            <img class="product" [src]="'assets/images/'+ product.profile" data-toggle="tooltip" [title]="product.Name"
+            <img class="product" [src]="'assets/images/'+ product.Profile" data-toggle="tooltip" [title]="product.Name"
                 data-bs-delay='{"show": 5000}'>
             <h6 class="text-secondary text-center my-3">{{product.Price | currency:'BRL'}}</h6>
-            <div class="d-flex justify-content-center">
+            <!--       <div class="d-flex justify-content-center">
                 <div class="card d-flex flex-row p-2">
                     <button class="btn btn-link btn-chart" [disabled]="product.numSelected <=0" data-toggle="tooltip"
                         title="Retirar -1 Item" data-bs-delay='{"show": 5000}' (click)="setProduct('-', product)"><i
@@ -14,7 +14,7 @@
                         title="Incluir +1 Item" data-bs-delay='{"show": 5000}' (click)="setProduct('+', product)"><i
                             class="fas fa-plus-circle text-info"></i></button>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { isNullOrUndefined } from '@swimlane/ngx-datatable';
-import { Product } from '../model/Product';
+import { IProduct, Product } from '../model/Product';
+import { ProductService } from '../services/product.service';
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-views',
@@ -9,17 +11,34 @@ import { Product } from '../model/Product';
   styleUrls: ['./views.component.scss']
 })
 export class ViewsComponent implements OnInit {
-  constructor(private router: Router) {
+  constructor(private router: Router, private productService: ProductService) {
   }
-  public listProducts: Array<Product> = [];
+  public listProducts: Array<IProduct> = [];
+
+  public carouselProducts;
+
+  public timerCarousel;
 
   public totalPurchase = 0;
 
   ngOnInit() {
-    this.listProducts.push({ Id: 0, Name: "Notebook Lenovo 14\"", Price: 2240, profile: "notebook.png", numSelected: 0 },
-      { Id: 1, Name: "Smart TV 4k 40\"", Price: 1920, profile: "smarttv.png", numSelected: 0 },
-      { Id: 2, Name: "Smartphone IPhone", Price: 4736, profile: "smartphone.png", numSelected: 0 });
-  }
+    this.productService.getProduct()
+      .subscribe((products) => {
+        if (this.productService.listValidation(products)) {
+          this.listProducts = products;
 
+          this.carouselProducts = new bootstrap.Carousel('#carouselProducts');
+
+
+        }
+      })
+  }
+  onOpenProduct(product: Product) {
+    if (!isNullOrUndefined(product)) {
+      return this.router.navigate(['product'], {
+        state: { productId: product.Id }
+      });
+    }
+  }
 
 }

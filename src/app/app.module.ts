@@ -10,6 +10,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
 import { NgxMaskModule } from 'ngx-mask';
 import ptBr from '@angular/common/locales/pt';
+import { LayoutModule } from './layout/layout.module';
+import { ProductService } from './services/product.service';
 
 
 registerLocaleData(ptBr);
@@ -24,10 +26,19 @@ registerLocaleData(ptBr);
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    LayoutModule,
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'pt' },
-    
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    },
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt'
+    },
+    ProductService
+
   ],
   bootstrap: [AppComponent]
 })

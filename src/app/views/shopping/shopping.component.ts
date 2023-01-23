@@ -24,12 +24,12 @@ export class ShoppingComponent {
       this.listProducts.forEach((prod) => {
         if (prod.Id == product.Id) {
           if (fn == '+') {
-            prod.numSelected++;
+           // prod.numSelected++;
           } else if (fn == '-') {
-            prod.numSelected = prod.numSelected > 0 ? prod.numSelected - 1 : 0;
+          //  prod.numSelected = prod.numSelected > 0 ? prod.numSelected - 1 : 0;
           }
         }
-        totalPurchase += (prod.Price * prod.numSelected)
+      //  totalPurchase += (prod.Price * prod.numSelected)
       })
     }
     this.purchaseCalculate.emit(totalPurchase);
