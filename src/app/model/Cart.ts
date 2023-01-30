@@ -1,6 +1,6 @@
 import { IProduct } from "./Product";
 
-export class Chart{
+export class Cart{
     Product: IProduct;
     Quantity: number;
 }

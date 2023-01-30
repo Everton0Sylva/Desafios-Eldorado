@@ -1,20 +1,22 @@
-<div class="w-100">
+<div class="w-100 border-bottom">
     <div class="d-flex flex-row justify-content-between">
-        <span role="button" class="d-block p-2 ml-3 ms-3 text-muted align-self-end mb-2" data-bs-toggle="collapse" aria-expanded="false"
-            aria-controls="menuCollapse" data-bs-target="#menuCollapse">
+        <span role="button" class="d-block p-2 ml-3 ms-3 text-muted align-self-end mb-2" data-bs-toggle="collapse"
+            aria-expanded="false" aria-controls="menuCollapse" data-bs-target="#menuCollapse">
             <i class="fa-solid fa-bars text-secondary"></i>
         </span>
         <span role="img" class="d-block text-center p-2" style="color: darkslategray;">
             <i class="fas fa-biohazard fa-3x"></i>
             <h2 class="fs-1">Bio-Hazard-Store</h2>
         </span>
-        <span class="d-block"></span>
+        <span role="button" class="mt-auto mb-2 mr-4 text-muted" routerLink="/cart">
+            <i class="fas fa-cart-plus ms-2 fa-lg"></i>
+        </span>
     </div>
 </div>
 <div class="collapse pb-3 card" id="menuCollapse">
     <div class="w-10">
         <nav class="nav flex-column">
-            <a *ngFor="let item of menuItens" [routerLink]="item.route"
+            <a *ngFor="let item of menuItens" (click)="onOpenCategory(item.name)"
                 class="nav-link active py-3 border-bottom rounded-0 d-flex justify-content-center align-items-baseline">
                 <i [class]="'fa-solid ' + item.icon"></i>
                 <label class="ms-2 me-1">{{item.label}}</label>

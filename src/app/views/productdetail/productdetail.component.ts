@@ -1,23 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Chart } from 'src/app/model/Chart';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { IProduct, Product } from 'src/app/model/Product';
 import { ApiRequestService } from 'src/app/services/apirequest.service';
-import { ChartService } from 'src/app/services/chart.service';
+import { ToastrService } from 'ngx-toastr';
+import { CartService } from 'src/app/services/cart.service';
+import { Cart } from 'src/app/model/Cart';
 
 @Component({
   selector: 'app-productdetail',
   templateUrl: './productdetail.component.html',
   styleUrls: ['./productdetail.component.scss']
 })
-export class ProductdetailComponent {
+export class ProductdetailComponent implements OnInit {
 
   public product: IProduct;
 
   public productId: number;
 
-  constructor(private router: Router, private route: ActivatedRoute, 
-    private apiRequestService: ApiRequestService, private chartService : ChartService) {
+  constructor(private router: Router, private route: ActivatedRoute,
+    private apiRequestService: ApiRequestService, private cartService: CartService, 
+    private ngxService: NgxUiLoaderService, private location: Location, private toastr: ToastrService) {
     let nav = this.router.getCurrentNavigation();
     if (nav !== null && nav !== undefined) {
       const state: any = nav.extras.state;
@@ -25,30 +29,36 @@ export class ProductdetailComponent {
         const id = state.productId;
         if (id !== null && id !== undefined) {
           this.productId = id;
-          this.onGetProduct();
+          //  this.onGetProduct();
         }
       }
     }
   }
 
-  onGetProduct() {
-    this.apiRequestService.GET(this.productId)
-      .then((data: any) => {
-        this.product = new Product(data);
-        setTimeout(() => {
-          document.getElementById("detailDiv").innerHTML = data.Detail;
-        }, 200);
-      }
-      ).catch(error => {
-        console.log(error)
-      });
+  // onGetProduct() {
+  ngOnInit() {
+    if (isNaN(this.productId)) {
+     this.location.back();
+    }else{
+      this.ngxService.start();
+      this.apiRequestService.GET("/products/", this.productId)
+        .then((data: any) => {
+          this.product = new Product(data);
+          this.product.Image = data.image ? data.image : data.Image;
+
+          this.ngxService.stop();
+        }
+        ).catch(error => {
+          console.log(error)
+        });
+    }
   }
 
-  onAddProduct(){
-    var chart = new Chart();
-    chart.Product = this.product;
-    chart.Quantity = 1;
+  onAddProduct() {
+    var cart = new Cart();
+    cart.Product = this.product;
 
-    this.chartService.setItemChart(chart);
-    }
+    this.toastr.success("Produto Adcionado ao carrinho!");
+    this.cartService.setItemCart(cart);
+  }
 }

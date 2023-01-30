@@ -6,18 +6,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
-import { ChartComponent } from './chart/chart.component';
-import { ShoppingComponent } from './shopping/shopping.component';
 import { LayoutModule } from '../layout/layout.module';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
-
+import { CartComponent } from './cart/cart.component';
+import { PurchaseComponent } from './cart/purchase/purchase.component';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { ProductsListComponent } from './products-list/products-list.component';
+import { HomeComponent } from './home/home.component';
+import { InterceptorModule } from '../services/interceptor/interceptor.module';
 
 @NgModule({
   declarations: [
     ViewsComponent,
-    ChartComponent,
-    ShoppingComponent,
     ProductdetailComponent,
+    CartComponent,
+    PurchaseComponent,
+    ProductsListComponent,
+    HomeComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +31,12 @@ import { ProductdetailComponent } from './productdetail/productdetail.component'
     NgxDatatableModule,
     ViewsRoutingModule,
     NgxMaskModule,
-    LayoutModule
+    LayoutModule,
+    NgxImageZoomModule,
+    InterceptorModule
+  ],  
+  exports: [
+    PurchaseComponent
   ]
 })
 export class ViewsModule { }
