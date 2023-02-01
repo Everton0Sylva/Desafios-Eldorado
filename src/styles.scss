@@ -5,8 +5,13 @@
 
 @import "node_modules/ngx-toastr/toastr-bs5-alert";
 
-.carousel-inner { padding-bottom:96px; }
-.carousel-caption { bottom:-93px; }
+.carousel-inner {
+    padding-bottom: 96px;
+}
+
+.carousel-caption {
+    bottom: -93px;
+}
 
 
 .product {

@@ -13,9 +13,5 @@ export class ViewsComponent {
   constructor(private router: Router, private apiRequestService: ApiRequestService) {
   }
   ngOnInit() {
-    let token = this.apiRequestService.getToken();
-    if (token == "") {
-      this.router.navigateByUrl('/login');
-    }
   }
 }

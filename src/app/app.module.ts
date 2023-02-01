@@ -15,6 +15,9 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { EncryptionService } from './services/encryption.service';
 import { AuthGuard } from './services/auth.guard';
 import { InterceptorModule } from './services/interceptor/interceptor.module';
+import { LoginService } from './services/login.service';
+import { UserService } from './services/user.service';
+import { ServicesModule } from './services/services.module';
 
 
 registerLocaleData(ptBr);
@@ -47,7 +50,8 @@ registerLocaleData(ptBr);
       positionClass: "toast-bottom-right"
     }),
     NgxImageZoomModule,
-    InterceptorModule
+    InterceptorModule,
+    ServicesModule
   ],
   providers: [
     {
@@ -58,9 +62,6 @@ registerLocaleData(ptBr);
       provide: LOCALE_ID,
       useValue: 'pt'
     },
-    CartService,
-    EncryptionService,
-    AuthGuard
 
   ],
   bootstrap: [AppComponent]

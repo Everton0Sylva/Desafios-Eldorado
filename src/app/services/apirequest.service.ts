@@ -12,8 +12,6 @@ export class ApiRequestService {
   constructor(private router: Router, private http: HttpClient,
     private encryptionService: EncryptionService) { }
 
-  private token: string;
-
   public async getBase64ImageFromUrl(imageUrl) {
     return new Promise((resolve) => {
       var xhr = new XMLHttpRequest();
@@ -39,7 +37,6 @@ export class ApiRequestService {
     });
   }
 
-
   public GET(param: string, id: number) {
     return new Promise((resolve, reject) => {
       let url = environment.url + param + id;
@@ -47,29 +44,5 @@ export class ApiRequestService {
         .then(res => res.json())
         .then(json => resolve(json))
     });
-  }
-
-  public LOGIN(boby: any) {
-    return new Promise((resolve, reject) => {
-      let url = environment.url + "/auth/login";
-      this.http.post(url, boby)
-        .toPromise()
-        .then((data: any) => {
-          this.token = data.token;
-          this.encryptToken();
-          resolve(data)
-        })
-    });
-  }
-
-  public encryptToken() {
-    const encodedData = this.encryptionService.onEncrypt(this.token);
-    localStorage.setItem("", encodedData);
-  }
-
-  public getToken() {
-    let accessToken = localStorage.getItem("");
-    this.token = this.encryptionService.onDecrypt(accessToken);
-    return this.token;
   }
 }

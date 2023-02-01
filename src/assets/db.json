@@ -1,0 +1,72 @@
+{
+  "categories": [],
+  "tokens": [
+    {
+      "token": "680ef627230e0ed55f31c9431e73aa24b8bfe29133da0dc68ebf5edd770aa327",
+      "userId": 4,
+      "id": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "john@gmail.com",
+      "password": "m38rmF$",
+      "isAdmin": false
+    },
+    {
+      "id": 2,
+      "username": "morrison@gmail.com",
+      "password": "83r5^_",
+      "isAdmin": false
+    },
+    {
+      "id": 3,
+      "username": "kevin@gmail.com",
+      "password": "kev02937@",
+      "isAdmin": false
+    },
+    {
+      "id": 4,
+      "username": "don@gmail.com",
+      "password": "ewedon",
+      "isAdmin": true
+    },
+    {
+      "id": 5,
+      "username": "derek@gmail.com",
+      "password": "jklg*_56",
+      "isAdmin": false
+    },
+    {
+      "id": 6,
+      "username": "david_r@gmail.com",
+      "password": "3478*#54",
+      "isAdmin": false
+    },
+    {
+      "id": 7,
+      "username": "miriam@gmail.com",
+      "password": "f238&@*$",
+      "isAdmin": false
+    },
+    {
+      "id": 8,
+      "username": "william@gmail.com",
+      "password": "William56$hj",
+      "isAdmin": false
+    },
+    {
+      "id": 9,
+      "username": "kate@gmail.com",
+      "password": "kfejk@*_",
+      "isAdmin": false
+    },
+    {
+      "id": 10,
+      "username": "jimmie@gmail.com",
+      "password": "klein*#%*",
+      "isAdmin": false
+    }
+  ]
+}

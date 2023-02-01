@@ -16,4 +16,9 @@ export class EncryptionService {
     var bytes = CryptoJS.AES.decrypt(data, this.secretKey);
     return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
   }
+
+  public generateToken(data: any) {
+    var token = CryptoJS.AES.encrypt(JSON.stringify(data), this.secretKey).toString();
+    return CryptoJS.SHA256(token).toString(CryptoJS.enc.Hex);
+  }
 }

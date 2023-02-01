@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApiRequestService } from 'src/app/services/apirequest.service';
 import { EncryptionService } from 'src/app/services/encryption.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -20,16 +21,19 @@ export class LoginComponent {
   constructor(private formBuilder: FormBuilder
     , private router: Router
     , private toastr: ToastrService,
-    private apiRequestService: ApiRequestService,
+    private loginService: LoginService,
     private ngxService: NgxUiLoaderService) {
 
-    this.loginForm = this.formBuilder.group({
-      username: [null, [Validators.required]],
-      password: [null, [Validators.required]],
-    })
   }
 
   ngOnInit() {
+    this.onForm();
+  }
+  onForm() {
+    this.loginForm = this.formBuilder.group({
+      username: ["don@gmail.com", [Validators.required]],
+      password: ["ewedon", [Validators.required]],
+    })
   }
 
   isInvalid(name): boolean {
@@ -42,16 +46,23 @@ export class LoginComponent {
       return
     }
     let body = {
-     "username" : this.loginForm.controls["username"].value,
-     "password" : this.loginForm.controls["password"].value
+      "username": this.loginForm.controls["username"].value,
+      "password": this.loginForm.controls["password"].value
     }
-    this.apiRequestService.LOGIN(body)
+    let that = this;
+    this.loginService.LOGIN(body)
       .then((data: any) => {
         this.ngxService.stop();
 
         this.router.navigate(['/']);
       }
-      ).catch(error => {
+      ).catch((error: any) => {
+        if (error.includes("user") && error.includes("pass") && error.includes("invalid")) {
+          that.toastr.error("Verifique os dados e tente novamente.", "Usuário ou senha inválido!",)
+          that.onForm();
+        } else {
+          that.toastr.error("Ocorreu erro desconhecido", "Erro no Login!",)
+        }
         console.log(error)
       });
 

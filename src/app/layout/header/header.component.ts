@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/model/User';
 import { ApiRequestService } from 'src/app/services/apirequest.service';
+import { CartService } from 'src/app/services/cart.service';
+import { LoginService } from 'src/app/services/login.service';
+import { UserService } from 'src/app/services/user.service';
 declare var bootstrap: any;
 
 @Component({
@@ -11,17 +15,27 @@ declare var bootstrap: any;
 export class HeaderComponent {
   public menuItens = []
 
+  public user: any = null;
   public collapse = null;
 
-  constructor(private apiRequestService: ApiRequestService, private router: Router,) { }
+  constructor(private apiRequestService: ApiRequestService,
+    private cartService: CartService, private router: Router, private userService: UserService) { }
 
   ngOnInit() {
     let that = this;
     this.collapse = new bootstrap.Collapse('#menuCollapse', {
       toggle: false
     })
+
+    this.userService.getUser()
+      .subscribe((user: User) => {
+        if(user) this.user = user;
+      })
+
+
     this.apiRequestService.GETS("/products/categories")
       .then((data: any) => {
+        if (this.cartService.listValidation(data)) that.menuItens = [{ icon: "fas fa-list-ul", label: "Todos", name: "todos" }];
         that.menuItens = data.map((cat: any) => {
           let name = cat;
           let icon = "";
@@ -43,7 +57,7 @@ export class HeaderComponent {
           }
 
           return { icon: icon, label: label, name: name }
-        });
+        })
 
         that.menuItens.unshift({ icon: "fas fa-list-ul", label: "Todos", name: "todos" });
       });
