@@ -45,4 +45,16 @@ export class ApiRequestService {
         .then(json => resolve(json))
     });
   }
+
+  public POST(param: any, body: any) {
+    return new Promise((resolve, reject) => {
+      let url = environment.urlapi + param;
+      this.http.post(url, body)
+        .toPromise().then((data: any) => {
+          resolve(data);
+        }).catch((error: any) => {
+          reject(error);
+        })
+    })
+  }
 }

@@ -29,37 +29,51 @@ export class HeaderComponent {
 
     this.userService.getUser()
       .subscribe((user: User) => {
-        if(user) this.user = user;
+        if (user) this.user = user;
       })
 
 
     this.apiRequestService.GETS("/products/categories")
       .then((data: any) => {
-        if (this.cartService.listValidation(data)) that.menuItens = [{ icon: "fas fa-list-ul", label: "Todos", name: "todos" }];
-        that.menuItens = data.map((cat: any) => {
-          let name = cat;
-          let icon = "";
-          let label = "";
-          if (cat.indexOf("jewel") >= 0) {
-            icon = "fas fa-gem";
-            label = "Joalheria"
-          } else if (cat.indexOf("elect") >= 0) {
-            icon = "fas fa-tv";
-            label = "Eletrônicos"
-          } else if (cat.indexOf("clothin") >= 0) {
-            if (cat.indexOf("wom") >= 0) {
-              icon = "fas fa-female";
-              label = "Moda Feminina"
-            } else {
-              icon = "fas fa-male";
-              label = "Moda Masculina"
+        let category = {
+          name: "",
+          icon: "",
+          label: ""
+        };
+        if (this.cartService.listValidation(data)) {
+          that.menuItens.push(data.map((cat: any) => {
+            category.name = cat;
+            if (cat.indexOf("jewel") >= 0) {
+              category.icon = "fas fa-gem";
+              category.label = "Joalheria"
+            } else if (cat.indexOf("elect") >= 0) {
+              category.icon = "fas fa-tv";
+              category.label = "Eletrônicos"
+            } else if (cat.indexOf("clothin") >= 0) {
+              if (cat.indexOf("wom") >= 0) {
+                category.icon = "fas fa-female";
+                category.label = "Moda Feminina"
+              } else {
+                category.icon = "fas fa-male";
+                category.label = "Moda Masculina"
+              }
             }
-          }
 
-          return { icon: icon, label: label, name: name }
-        })
-
-        that.menuItens.unshift({ icon: "fas fa-list-ul", label: "Todos", name: "todos" });
+            this.apiRequestService.POST("/categories", category)
+              .then((data: any) => {
+                debugger
+                return category
+              }).catch((error: any) => {
+                console.log(error)
+              })
+          }))
+        }
+        setTimeout(() => {
+          category.name = "todos";
+          category.icon = "fas fa-list-ul";
+          category.label = "Todos"
+          that.menuItens.unshift(category);
+        }, 500);
       });
   }
 

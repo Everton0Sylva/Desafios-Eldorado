@@ -40,7 +40,6 @@ export class UserService {
       if (token) {
         this.loginService.GetUser(token)
           .then((user: User) => {
-            debugger
             resolve(user);
           }).catch((error: any) => {
             reject(error)

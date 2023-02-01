@@ -1,5 +1,33 @@
 {
-  "categories": [],
+  "categories": [
+    {
+      "id": 0
+    },
+    {
+      "name": "electronics",
+      "icon": "fas fa-tv",
+      "label": "Eletrônicos",
+      "id": 1
+    },
+    {
+      "name": "jewelery",
+      "icon": "fas fa-gem",
+      "label": "Joalheria",
+      "id": 2
+    },
+    {
+      "name": "men's clothing",
+      "icon": "fas fa-male",
+      "label": "Moda Masculina",
+      "id": 3
+    },
+    {
+      "name": "women's clothing",
+      "icon": "fas fa-female",
+      "label": "Moda Feminina",
+      "id": 4
+    }
+  ],
   "tokens": [
     {
       "token": "680ef627230e0ed55f31c9431e73aa24b8bfe29133da0dc68ebf5edd770aa327",
