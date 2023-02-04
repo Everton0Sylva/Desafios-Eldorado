@@ -31,8 +31,8 @@ export class LoginComponent {
   }
   onForm() {
     this.loginForm = this.formBuilder.group({
-      username: ["don@gmail.com", [Validators.required]],
-      password: ["ewedon", [Validators.required]],
+      username: [null, [Validators.required]],
+      password: [null, [Validators.required]],
     })
   }
 

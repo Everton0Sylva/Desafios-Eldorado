@@ -55,7 +55,6 @@ export class HeaderComponent {
   }
 
   onOpenuserDropdown() {
-    debugger
     this.userMenu.show();
   }
 

@@ -14,7 +14,7 @@
                 <div class="col-md-12 col-lg-12 form-group">
                     <label>Email</label>
                     <input class="form-control" type="email" [(ngModel)]="userProfile.email"
-                        placeholder="Nome Completo do Usuario">
+                        placeholder="Email">
                     <div class="text-danger fw-bold" *ngIf="isInvalid == 'email'">
                         Campo 'Email' Invalido
                     </div>
@@ -22,7 +22,7 @@
                 <div class="col-md-12 col-lg-12 form-group">
                     <label>Telefone</label>
                     <input class="form-control" type="text" [(ngModel)]="userProfile.telefone"
-                        placeholder="Nome Completo do Usuario" mask="(00) 00000-0000">
+                        placeholder="(XX) XXXXX-XXXX" mask="(00) 00000-0000">
                     <div class="text-danger fw-bold" *ngIf="isInvalid == 'telefone'">
                         Campo 'Telefone' Invalido
                     </div>

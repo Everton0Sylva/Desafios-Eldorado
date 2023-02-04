@@ -23,7 +23,7 @@ export class UserprofileComponent {
 
   public isInvalid = "";
 
-  public currentCep = "13053004";
+  public currentCep = "";
 
   public customSelectValues = {
     states: [],
@@ -74,7 +74,6 @@ export class UserprofileComponent {
         this.apiRequestService.GetCEP(cep)
           .then((data: any) => {
             this.userProfile.endereco = new Endereco(data);
-            debugger
           }).catch((error: any) => {
             Swal.fire({
               text: 'CEP não encontrado ou inválido',

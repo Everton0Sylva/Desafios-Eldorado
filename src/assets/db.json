@@ -27,14 +27,12 @@
   ],
   "tokens": [
     {
-      "token": "82084affc75f260e50441fcbc475182bd772c10e6bdea10eac76e221cdaa7b4b",
-      "userId": 4,
-      "id": 1
+      "id": 0
     },
     {
-      "token": "84eb6945afafc67139d577b666d2f2fd92d73af5fb808eed2352a4edad4d1974",
+      "token": "f3eeb731638b9516f1d7e88a78d6187d46a8d84dc5df9f34163255101b95ed1c",
       "userId": 4,
-      "id": 2
+      "id": 1
     }
   ],
   "users": [
