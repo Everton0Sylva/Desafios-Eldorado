@@ -17,14 +17,17 @@ export class RequestInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const that = this;
+    let request2;
     if (this.token == null) {
       this.token = JSON.parse(localStorage.getItem("AuthToken"));
+
+      request2 = request.clone({
+        setHeaders: {
+          Authorization: 'Bearer ' + this.token
+        }
+      });
     }
-    const request2 = request.clone({
-      setHeaders: {
-        Authorization: 'Bearer ' + this.token
-      }
-    });
+
     return next.handle(request2);
   }
 }

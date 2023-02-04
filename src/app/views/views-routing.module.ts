@@ -12,23 +12,19 @@ const routes: Routes = [
   {
     path: '',
     component: ViewsComponent,
-    canActivate: [AuthGuard],
     children: [
       {
         path: '',
         component: HomeComponent,
         pathMatch: 'full',
-        canActivate: [AuthGuard],
       },
       {
         path: 'product',
         component: ProductdetailComponent,
-        canActivate: [AuthGuard],
       },
       {
         path: 'products/:category',
         component: ProductsListComponent,
-        canActivate: [AuthGuard],
       },
       {
         path: 'cart',

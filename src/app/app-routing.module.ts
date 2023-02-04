@@ -7,7 +7,6 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./views/views.module').then(m => m.ViewsModule), 
-    canActivate: [AuthGuard]
   },
   {
     path: 'login',

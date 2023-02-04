@@ -26,8 +26,6 @@ export class UserService {
       this.InitUser()
         .then((user: User) => {
           this.setUser(user);
-        }).catch((error: any) => {
-          console.log(error)
         })
     }
 
@@ -38,6 +36,7 @@ export class UserService {
     return new Promise((resolve, reject) => {
       let token = JSON.parse(localStorage.getItem("AuthToken"));
       if (token) {
+        debugger
         this.loginService.GetUser(token)
           .then((user: User) => {
             resolve(user);

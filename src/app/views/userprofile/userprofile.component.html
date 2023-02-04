@@ -56,19 +56,19 @@
                             </div>
                             <div class="col-md-12 col-lg-2 form-group">
                                 <label>Numero</label>
-                                <input class="form-control" type="text" [(ngModel)]="userProfile.nome"
-                                    placeholder="Nome Completo do Usuario">
-                                <div class="text-danger fw-bold" *ngIf="isInvalid == 'nome'">
+                                <input class="form-control" type="text" [(ngModel)]="userProfile.endereco.numero"
+                                    placeholder="Numero">
+                                <div class="text-danger fw-bold" *ngIf="isInvalid == 'numero'">
                                     Campo 'Nome do Usuario' Invalido
                                 </div>
                             </div>
-                            
-                            <div class="col-md-12 col-lg-12 form-group">
-                                <label>Nome do Usuario</label>
-                                <input class="form-control" type="text" [(ngModel)]="userProfile.nome"
-                                    placeholder="Nome Completo do Usuario">
-                                <div class="text-danger fw-bold" *ngIf="isInvalid == 'nome'">
-                                    Campo 'Nome do Usuario' Invalido
+
+                            <div class="col-md-12 col-lg-10 form-group">
+                                <label>Complemento</label>
+                                <input class="form-control" type="text" [(ngModel)]="userProfile.endereco.complemento"
+                                    placeholder="Complemento">
+                                <div class="text-danger fw-bold" *ngIf="isInvalid == 'complemento'">
+                                    Campo 'Complemento' Invalido
                                 </div>
                             </div>
 
