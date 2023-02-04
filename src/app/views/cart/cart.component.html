@@ -1,0 +1,38 @@
+<div class="card p-3 mt-2" *ngIf="listCart != null">
+    <div class="col-12">
+        <div class="d-flex flex-column mt-2">
+            <div class="d-flex flex-row justify-content-between p-2" *ngFor="let cart of listCart">
+
+                <div (click)="onOpenProduct(cart.Product)" data-toggle="tooltip" [title]="cart.Product.Title"
+                    data-bs-delay='{"show": 5000}'>
+                    <img [src]="cart.Product.Image" width="50" height="50" [alt]="cart.Product.Title">
+                </div>
+
+                <h6 class="text-muted">{{cart.Product.Price | currency:'BRL'}}</h6>
+
+
+                <div>
+                    <button class="btn btn-link btn-cart" *ngIf="cart.Quantity >=2" data-toggle="tooltip"
+                        title="Retirar -1 Item" data-bs-delay='{"show": 5000}' (click)="setItemCart('-', cart)"><i
+                            class="fas fa-minus-circle text-info"></i></button>
+                    <button class="btn btn-link btn-cart" *ngIf="cart.Quantity ==1" data-toggle="tooltip"
+                        title="Remover Item" data-bs-delay='{"show": 5000}' (click)="setItemCart('-', cart)"><i
+                            class="fas fa-minus-circle text-danger"></i></button>
+                    <strong class="mx-2">{{cart.Quantity}}</strong>
+                    <button class="btn btn-link btn-cart" [disabled]="cart.Quantity >=10" data-toggle="tooltip"
+                        title="Incluir +1 Item" data-bs-delay='{"show": 5000}' (click)="setItemCart('+', cart)"><i
+                            class="fas fa-plus-circle text-info"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card col-12 mt-3 p-3" *ngIf="listCart.length > 0">
+        <app-purchase></app-purchase>
+    </div>
+</div>
+<div *ngIf="listCart == null"
+    class="d-flex flex-column align-items-center justify-content-center flex-wrap text-muted position-absolute top-50 start-50 translate-middle">
+    <i class="fas fa-shopping-cart fa-3x me-2"></i>
+    <h2 class="fs-2 col-12 text-center">Seu Carrinho Está Vazio</h2>
+</div>

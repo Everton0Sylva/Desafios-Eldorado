@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="card p-2 col-md-12 col-lg-8">
+        <h6 class="card-title">Perfil do Usuario</h6>
+        <div class="card-body" *ngIf="userProfile != null">
+            <div class="d-flex flex-row flex-wrap">
+                <div class="col-md-12 col-lg-12 form-group">
+                    <label>Nome do Usuario</label>
+                    <input class="form-control" type="text" [(ngModel)]="userProfile.nome"
+                        placeholder="Nome Completo do Usuario">
+                    <div class="text-danger fw-bold" *ngIf="isInvalid == 'nome'">
+                        Campo 'Nome do Usuario' Invalido
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-12 form-group">
+                    <label>Email</label>
+                    <input class="form-control" type="email" [(ngModel)]="userProfile.email"
+                        placeholder="Email">
+                    <div class="text-danger fw-bold" *ngIf="isInvalid == 'email'">
+                        Campo 'Email' Invalido
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-12 form-group">
+                    <label>Telefone</label>
+                    <input class="form-control" type="text" [(ngModel)]="userProfile.telefone"
+                        placeholder="(XX) XXXXX-XXXX" mask="(00) 00000-0000">
+                    <div class="text-danger fw-bold" *ngIf="isInvalid == 'telefone'">
+                        Campo 'Telefone' Invalido
+                    </div>
+                </div>
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <small class="fw-bolder my-2">Endereço</small>
+                        <div class="row row-cols-12">
+                            <div class="col-md-12 col-lg-5 ms-auto">
+                                <div class="input-group">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" [(ngModel)]="currentCep" id="logradouro"
+                                            mask="00000-000" placeholder="CEP do Endereço" (change)="onSearchAddress()">
+                                        <label for="logradouro">CEP</label>
+                                    </div>
+                                    <button class="btn btn-outline-primary" type="button" (click)="onSearchAddress()"><i
+                                            class="fas fa-search-location"></i></button>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12 input-group">
+                                <div class="col-md-12 col-lg-3">
+                                    <app-custom-select [customSelect]="customSelectValues"
+                                        (valueSelected)="userProfile.endereco.tipoLogradouro = $event"></app-custom-select>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" type="text"
+                                        [(ngModel)]="userProfile.endereco.logradouro" id="logradouro"
+                                        placeholder="Nome Completo do Usuario">
+                                    <label for="logradouro">Logradouro</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-2 form-group">
+                                <label>Numero</label>
+                                <input class="form-control" type="text" [(ngModel)]="userProfile.endereco.numero"
+                                    placeholder="Numero">
+                                <div class="text-danger fw-bold" *ngIf="isInvalid == 'numero'">
+                                    Campo 'Nome do Usuario' Invalido
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-10 form-group">
+                                <label>Complemento</label>
+                                <input class="form-control" type="text" [(ngModel)]="userProfile.endereco.complemento"
+                                    placeholder="Complemento">
+                                <div class="text-danger fw-bold" *ngIf="isInvalid == 'complemento'">
+                                    Campo 'Complemento' Invalido
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,40 @@
+<div class="login-bgc">
+    <div class="d-flex w-100 h-100 flex-column align-items-center justify-content-center flex-wrap">
+        <div class="card px-3">
+            <span role="img" class="d-flex flex-row p-2" style="color: darkslategray;">
+                <i class="fas fa-biohazard fa-2x me-2 mr-2"></i>
+                <h2 class="fs-2">Bio-Hazard-Store</h2>
+            </span>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="d-flex flex-column mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user text-muted"></i></span>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="username" placeholder="Usuário">
+                            <label for="username">Usuário</label>
+                        </div>
+                    </div>
+                    <h6 class="text-danger fs-6 ms-1" *ngIf="isInvalid('username')">
+                        Campo 'Usuário' Inválido
+                    </h6>
+                </div>
+                <div class="d-flex flex-column mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-unlock-alt text-muted"></i></span>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="password" placeholder="Senha">
+                            <label for="password">Senha</label>
+                        </div>
+                    </div>
+                    <h6 class="text-danger fs-6 ms-1" *ngIf="isInvalid('password')">
+                        Campo 'Senha' Inválido
+                    </h6>
+                </div>
+                <div class="d-grid mb-3">
+                    <button class="btn btn-success" type="submit">Entrar
+                        <i class="fas fa-sign-in-alt ms-3"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

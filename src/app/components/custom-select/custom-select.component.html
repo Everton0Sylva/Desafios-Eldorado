@@ -1,0 +1,7 @@
+<div class="form-floating">
+    <input [id]="customSelect.name" [(ngModel)]="selectedValue" type="text" class="form-control" [ngbTypeahead]="search"
+        (focus)="focus$.next($any($event).target.value)" (click)="click$.next($any($event).target.value)"
+        [inputFormatter]="formatter" [resultFormatter]="formatter" [editable]="false"
+        (ngModelChange)="OnChangeCustomSelect()" #instance="ngbTypeahead" [placeholder]="customSelect.name" />
+    <label [for]="customSelect.name">{{customSelect?.label}}</label>
+</div>

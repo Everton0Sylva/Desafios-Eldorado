@@ -1,19 +1,105 @@
 {
-  "posts": [
+  "categories": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "electronics",
+      "icon": "fas fa-tv",
+      "label": "Eletrônicos",
+      "id": 1
+    },
+    {
+      "name": "jewelery",
+      "icon": "fas fa-gem",
+      "label": "Joalheria",
+      "id": 2
+    },
+    {
+      "name": "men's clothing",
+      "icon": "fas fa-male",
+      "label": "Moda Masculina",
+      "id": 3
+    },
+    {
+      "name": "women's clothing",
+      "icon": "fas fa-female",
+      "label": "Moda Feminina",
+      "id": 4
     }
   ],
-  "comments": [
+  "tokens": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 0
+    },
+    {
+      "token": "f3eeb731638b9516f1d7e88a78d6187d46a8d84dc5df9f34163255101b95ed1c",
+      "userId": 4,
+      "id": 1
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "users": [
+    {
+      "id": 1,
+      "username": "john@gmail.com",
+      "password": "m38rmF$",
+      "isAdmin": false
+    },
+    {
+      "id": 2,
+      "username": "morrison@gmail.com",
+      "password": "83r5^_",
+      "isAdmin": false
+    },
+    {
+      "id": 3,
+      "username": "kevin@gmail.com",
+      "password": "kev02937@",
+      "isAdmin": false
+    },
+    {
+      "id": 4,
+      "username": "don@gmail.com",
+      "password": "ewedon",
+      "isAdmin": false
+    },
+    {
+      "id": 5,
+      "username": "derek@gmail.com",
+      "password": "jklg*_56",
+      "isAdmin": false
+    },
+    {
+      "id": 6,
+      "username": "david_r@gmail.com",
+      "password": "3478*#54",
+      "isAdmin": false
+    },
+    {
+      "id": 7,
+      "username": "miriam@gmail.com",
+      "password": "f238&@*$",
+      "isAdmin": false
+    },
+    {
+      "id": 8,
+      "username": "william@gmail.com",
+      "password": "William56$hj",
+      "isAdmin": false
+    },
+    {
+      "id": 9,
+      "username": "kate@gmail.com",
+      "password": "kfejk@*_",
+      "isAdmin": false
+    },
+    {
+      "id": 10,
+      "username": "jimmie@gmail.com",
+      "password": "klein*#%*",
+      "isAdmin": false
+    }
+  ],
+  "userProfile": [
+    {
+      "id": 0
+    }
+  ]
 }

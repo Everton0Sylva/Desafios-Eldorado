@@ -1,20 +1,46 @@
-<div class="w-100">
+<div class="header w-100 border-bottom">
     <div class="d-flex flex-row justify-content-between">
-        <span role="button" class="d-block p-2 ml-3 ms-3 text-muted align-self-end mb-2" data-bs-toggle="collapse" aria-expanded="false"
-            aria-controls="menuCollapse" data-bs-target="#menuCollapse">
+        <span role="button" class="d-block p-2 ml-3 ms-3 text-muted align-self-end mb-2" data-bs-toggle="collapse"
+            aria-expanded="false" aria-controls="menuCollapse" data-bs-target="#menuCollapse">
             <i class="fa-solid fa-bars text-secondary"></i>
         </span>
-        <span role="img" class="d-block text-center p-2" style="color: darkslategray;">
+        <span role="img" class="d-block text-center p-2" style="color: rgb(20, 19, 97);">
             <i class="fas fa-biohazard fa-3x"></i>
             <h2 class="fs-1">Bio-Hazard-Store</h2>
         </span>
-        <span class="d-block"></span>
+        <div class="col-md-2 col-sm-12 mt-auto mb-2 mr-4" *ngIf="user != null">
+            <div class="d-flex flex-row justify-content-end">
+                <div class="btn-group dropstart me-auto ms-5" ngbDropdown #userDrop="ngbDropdown"
+                    [placement]="['bottom-start', 'start-top']">
+                    <a class="text-primary" role="button" id="userDropdown" NgbDropdownAnchor (click)="userDrop.open()">
+                        <i class="bi bi-person-circle"></i>
+                    </a>
+                    <div ngbDropdownMenu class="dropdown-menu">
+                        <a ngbDropdownItem (click)="onOpenProfile()"><i class="bi bi-person-gear me-1"></i>Conta</a>
+                        <a ngbDropdownItem (click)="onLogout()"><i class="bi bi-box-arrow-left me-1"></i>Sair</a>
+                        <a ngbDropdownItem></a>
+                    </div>
+                </div>
+
+
+                <span role="button" class=" text-muted" routerLink="/cart">
+                    <i class="fas fa-cart-plus ms-2 fa-lg"></i>
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-2 mt-auto mb-2 mr-4" *ngIf="user == null">
+            <button class="btn btn-link" routerLink="/login"><i class="fas fa-user-shield me-2 mr-2"></i>Login</button>
+        </div>
     </div>
 </div>
 <div class="collapse pb-3 card" id="menuCollapse">
     <div class="w-10">
         <nav class="nav flex-column">
-            <a *ngFor="let item of menuItens" [routerLink]="item.route"
+            <a *ngFor="let item of menuItens" (click)="onOpenCategory(item.name)"
                 class="nav-link active py-3 border-bottom rounded-0 d-flex justify-content-center align-items-baseline">
                 <i [class]="'fa-solid ' + item.icon"></i>
                 <label class="ms-2 me-1">{{item.label}}</label>

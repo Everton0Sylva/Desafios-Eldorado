@@ -1,33 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
 
 @import "node_modules/bootstrap/scss/bootstrap";
 
 
-.product {
-    width: 12vw;
-    height: 20vh;
-    background-repeat: no-repeat;
-    background-position: center;
-}
+@import "node_modules/ngx-toastr/toastr-bs5-alert";
 
-.btn-chart {
+.btn-cart {
     --bs-btn-padding-y: 0 !important;
     --bs-btn-padding-x: 0 !important;
     --bs-btn-font-size: 1rem !important;
 }
 
 .form-floating-sm {
-    $form-floating-height:                  add(1.5rem, $input-height-border);
-    $form-floating-line-height:             1;
-    $form-floating-padding-x:               $input-padding-x;
-    $form-floating-padding-y:               .5rem;
-    $form-floating-input-padding-t:         1.425rem;
-    $form-floating-input-padding-b:         .425rem;
-    $form-floating-label-height:            1.675em;
-    $form-floating-label-opacity:           .65;
-    $form-floating-label-transform:         scale(.85) translateY(-.5rem) translateX(.15rem);
-    $form-floating-label-disabled-color:    $gray-600;
-    $form-floating-transition:              opacity .1s ease-in-out, transform .1s ease-in-out;
+    $form-floating-height: add(1.5rem, $input-height-border);
+    $form-floating-line-height: 1;
+    $form-floating-padding-x: $input-padding-x;
+    $form-floating-padding-y: .5rem;
+    $form-floating-input-padding-t: 1.425rem;
+    $form-floating-input-padding-b: .425rem;
+    $form-floating-label-height: 1.675em;
+    $form-floating-label-opacity: .65;
+    $form-floating-label-transform: scale(.85) translateY(-.5rem) translateX(.15rem);
+    $form-floating-label-disabled-color: $gray-600;
+    $form-floating-transition: opacity .1s ease-in-out,
+    transform .1s ease-in-out;
+}
+
+$color1: #00685a70;
+$color2: #c5690070;
+
+.login-bgc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background: linear-gradient(70deg, $color1, $color2) !important;
+}
+
+#main {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(150deg, $color2, $color1 ) !important;
+    opacity: 0, 5;
 }

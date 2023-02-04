@@ -1,0 +1,26 @@
+<div class="card py-3">
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <h4 class="text-uppercase text-primary">Destaques</h4>
+        <div class="col-md-3 col-sm-12 mt-3">
+            <div id="carouselProducts" class="carousel carousel-dark slide carousel-fade card" data-bs-ride="carousel"
+                data-bs-interval="5000" data-bs-pause="hover">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselProducts" [ngClass]="{'active': i === 0}"
+                        *ngFor="let product of listProducts; let i = index" [attr.data-bs-slide-to]="i"
+                        [attr.aria-label]="product.Title"></button>
+                </div>
+                <div class="carousel-inner px-2 pt-2" *ngIf="listProducts.length > 0">
+                    <div class="carousel-item" *ngFor="let product of listProducts; let i = index"
+                        [ngClass]="{'active': i === 0}">
+                        <img [src]="product.Image" class="product d-block w-100" height="230" [alt]="product.Title" (click)="onOpenProduct(product)">
+                        <div class="carousel-caption d-flex flex-column">
+                            <h6 class="text-bolder text-danger mt-1">{{product.Price | currency:'BRL'}}</h6>
+                            <button class="btn btn-outline-success btn-sm mt-0" (click)="onAddProduct(product)">Adicionar<i
+                                    class="fas fa-cart-plus fa-sm ms-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

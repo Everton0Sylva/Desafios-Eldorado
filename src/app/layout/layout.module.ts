@@ -7,22 +7,28 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent],
+    FooterComponent,
+    LoginComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    NgbDropdownModule
   ],
   exports: [
     HeaderComponent,
-    FooterComponent],
+    FooterComponent,
+    LoginComponent
+  ],
 })
 export class LayoutModule { }
