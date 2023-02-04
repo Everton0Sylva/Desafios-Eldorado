@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { Cart } from 'src/app/model/Cart';
 import { IProduct, Product } from 'src/app/model/Product';
 import { ApiRequestService } from 'src/app/services/apirequest.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -14,7 +16,7 @@ declare var bootstrap: any;
 })
 export class HomeComponent implements OnInit {
   constructor(private router: Router, private ngxService: NgxUiLoaderService, private cartService: CartService,
-  public apiRequestService: ApiRequestService) {
+  public apiRequestService: ApiRequestService, private toastr: ToastrService) {
   }
   public listProducts: Array<IProduct> = [];
 
@@ -30,7 +32,7 @@ export class HomeComponent implements OnInit {
     this.ngxService.start();
     let that = this;
 
-    this.apiRequestService.GETS("/products")
+    this.apiRequestService.GetsFetch("/products")
     .then(async (products: any) => {
         if (that.cartService.listValidation(products)) {
           var pos = []
@@ -63,5 +65,13 @@ export class HomeComponent implements OnInit {
         state: { productId: product.Id }
       });
     }
+  }
+
+  onAddProduct(product: Product) {
+    var cart = new Cart();
+    cart.Product = product;
+
+    this.toastr.success("Produto Adcionado ao carrinho!");
+    this.cartService.setItemCart(cart);
   }
 }

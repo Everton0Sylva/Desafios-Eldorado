@@ -20,7 +20,7 @@ export class ProductdetailComponent implements OnInit {
   public productId: number;
 
   constructor(private router: Router, private route: ActivatedRoute,
-    private apiRequestService: ApiRequestService, private cartService: CartService, 
+    private apiRequestService: ApiRequestService, private cartService: CartService,
     private ngxService: NgxUiLoaderService, private location: Location, private toastr: ToastrService) {
     let nav = this.router.getCurrentNavigation();
     if (nav !== null && nav !== undefined) {
@@ -38,10 +38,10 @@ export class ProductdetailComponent implements OnInit {
   // onGetProduct() {
   ngOnInit() {
     if (isNaN(this.productId)) {
-     this.location.back();
-    }else{
+      this.location.back();
+    } else {
       this.ngxService.start();
-      this.apiRequestService.GET("/products/", this.productId)
+      this.apiRequestService.GetFetch("/products/", this.productId)
         .then((data: any) => {
           this.product = new Product(data);
           this.product.Image = data.image ? data.image : data.Image;

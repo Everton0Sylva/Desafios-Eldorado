@@ -72,7 +72,6 @@ export class LoginService {
         .toPromise()
         .then((data: any) => {
           let fToken = data.find((tk: Token) => {
-            debugger
             return tk.token == uToken.token && tk.userId == uToken.userId
           });
           if (fToken) {
@@ -88,6 +87,32 @@ export class LoginService {
           return reject("not.find.token")
         })
     });
+  }
+
+  LOGOUT(user: User) {
+    return new Promise((resolve, reject) => {
+      let token = JSON.parse(localStorage.getItem("AuthToken"));
+      if (token.userId == user.id) {
+        let tokenUrl = environment.urlapi + "/tokens";
+        this.http.get(tokenUrl)
+          .toPromise()
+          .then((data: any) => {
+            let fToken = data.find((tk: Token) => {
+              return tk.token == token.token && tk.userId == token.userId
+            });
+            if (fToken) {
+              this.http.delete(tokenUrl + "/" + fToken.id)
+                .toPromise()
+                .then((data: any) => {
+                  localStorage.removeItem("AuthToken")
+                  resolve(data);
+                }).catch((error: any) => {
+                  return reject(error)
+                })
+            }
+          })
+      }
+    })
   }
 
 }

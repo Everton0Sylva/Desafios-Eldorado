@@ -1,9 +1,6 @@
 {
   "categories": [
     {
-      "id": 0
-    },
-    {
       "name": "electronics",
       "icon": "fas fa-tv",
       "label": "Eletrônicos",
@@ -30,7 +27,7 @@
   ],
   "tokens": [
     {
-      "token": "680ef627230e0ed55f31c9431e73aa24b8bfe29133da0dc68ebf5edd770aa327",
+      "token": "82084affc75f260e50441fcbc475182bd772c10e6bdea10eac76e221cdaa7b4b",
       "userId": 4,
       "id": 1
     }
@@ -58,7 +55,7 @@
       "id": 4,
       "username": "don@gmail.com",
       "password": "ewedon",
-      "isAdmin": true
+      "isAdmin": false
     },
     {
       "id": 5,
@@ -95,6 +92,11 @@
       "username": "jimmie@gmail.com",
       "password": "klein*#%*",
       "isAdmin": false
+    }
+  ],
+  "userProfile": [
+    {
+      "id": 0
     }
   ]
 }

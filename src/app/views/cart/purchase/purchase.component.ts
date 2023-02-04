@@ -90,7 +90,6 @@ export class PurchaseComponent {
         this.modalCoupon.hide();
       }
     })
-
   }
 
   onApllyDiscount() {

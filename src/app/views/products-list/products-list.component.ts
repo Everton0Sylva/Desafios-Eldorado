@@ -51,7 +51,7 @@ export class ProductsListComponent {
     if (this.category != "") {
       let path = this.category.includes("todos") ? "/products" : ("/products/category/" + this.category);
 
-      this.apiRequestService.GETS(path)
+      this.apiRequestService.GetsFetch(path)
         .then(async (products: any) => {
           if (products.length > 0) {
             that.listProduct = await Promise.all(products.map(async (prod: any, idx: number) => {

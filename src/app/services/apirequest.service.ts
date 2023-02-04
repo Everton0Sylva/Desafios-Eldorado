@@ -28,7 +28,8 @@ export class ApiRequestService {
     })
   }
 
-  public GETS(param: string) {
+
+  public GetsFetch(param: string) {
     return new Promise((resolve, reject) => {
       let url = environment.url + param;
       fetch(url)
@@ -37,12 +38,45 @@ export class ApiRequestService {
     });
   }
 
-  public GET(param: string, id: number) {
+
+  public GetsHttp(url: any) {
+    return new Promise((resolve, reject) => {
+      this.http.get(url, {
+      })
+        .toPromise()
+        .then(
+          data => {
+            resolve(data);
+          }
+        ).catch(error => {
+          reject(error);
+        })
+        ;
+    });
+  }
+
+  public GetFetch(param: string, id: number) {
     return new Promise((resolve, reject) => {
       let url = environment.url + param + id;
       fetch(url)
         .then(res => res.json())
         .then(json => resolve(json))
+    });
+  }
+
+  public GetHttp(url: any) {
+    return new Promise((resolve, reject) => {
+      this.http.get(url, {
+      })
+        .toPromise()
+        .then(
+          data => {
+            resolve(data);
+          }
+        ).catch(error => {
+          reject(error);
+        })
+        ;
     });
   }
 
@@ -57,4 +91,21 @@ export class ApiRequestService {
         })
     })
   }
+
+  public GetCEP(cep: string) {
+    return new Promise((resolve, reject) => {
+      this.http.get("https://viacep.com.br/ws/" + cep + "/json/", {
+      })
+        .toPromise()
+        .then(
+          data => {
+            resolve(data);
+          }
+        ).catch(error => {
+          reject(error);
+        })
+        ;
+    });
+  }
+
 }

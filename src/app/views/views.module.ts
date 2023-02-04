@@ -14,6 +14,10 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { HomeComponent } from './home/home.component';
 import { InterceptorModule } from '../services/interceptor/interceptor.module';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { ComponentsModule } from '../components/components.module';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +27,7 @@ import { InterceptorModule } from '../services/interceptor/interceptor.module';
     PurchaseComponent,
     ProductsListComponent,
     HomeComponent,
+    UserprofileComponent,
   ],
   imports: [
     CommonModule,
@@ -30,11 +35,12 @@ import { InterceptorModule } from '../services/interceptor/interceptor.module';
     ReactiveFormsModule,
     NgxDatatableModule,
     ViewsRoutingModule,
-    NgxMaskModule,
+    NgxMaskModule.forRoot(),
     LayoutModule,
     NgxImageZoomModule,
-    InterceptorModule
-  ],  
+    InterceptorModule,
+    ComponentsModule,
+  ],
   exports: [
     PurchaseComponent
   ]

@@ -24,7 +24,7 @@ registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     FormsModule,

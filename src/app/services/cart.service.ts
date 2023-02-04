@@ -65,7 +65,7 @@ export class CartService {
         else pos.push(rand);
       }
       var promi = await pos.map(async (p) => {
-        return await this.apiRequestService.GET("/products/", p)
+        return await this.apiRequestService.GetFetch("/products/", p)
           .then(
             async (data: any) => {
               return await this.apiRequestService.getBase64ImageFromUrl(data.image).then(async image => {
